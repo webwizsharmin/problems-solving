@@ -1,4 +1,5 @@
 /* LEVEL-1: WARM-UP (BASIC) */
+
 // Even or Odd (level-1, 1)
 const isOddEven = function (num) {
   return num % 2 === 0 ? "Even" : "Odd";
@@ -173,3 +174,44 @@ const firstFunc = once(primary);
 
 console.log(firstFunc());
 console.log(firstFunc());
+
+// LEVEL-5: Real Interview Level
+// Implement a function that: takes an array of numbers returns a function that when called, returns the next number in sequence and when sequence ends, returns "done"
+
+function createSequence(numbers) {
+  let index = 0;
+
+  return function () {
+    if (index < numbers.length) {
+      return numbers[index++];
+    } else {
+      return "done";
+    }
+  };
+}
+
+// Example of use cases
+const nextNumber = createSequence([40, 50]);
+
+console.log(nextNumber());
+console.log(nextNumber());
+console.log(nextNumber());
+
+// own version of Array.prototype.map() as a function
+function myMap(array, callback) {
+  const result = [];
+
+  for (let i = 0; i < array.length; i++) {
+    result.push(callback(array[i], i, array));
+  }
+
+  return result;
+}
+
+const numbers = [1, 2, 3, 4];
+
+const doubled = myMap(numbers, function (num) {
+  return num * 2;
+});
+
+console.log(doubled);
