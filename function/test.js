@@ -129,3 +129,47 @@ runFunctionFiveTimes(sayLoveYou);
 console.log("\n--- Running countUp five times ---");
 const counter = countUp(); // Get the inner function
 runFunctionFiveTimes(counter);
+
+// LEVEL-4: Higher Level(Closures & Callbacks)
+// Creating counter function using closures
+function temporary() {
+  let counter = 0;
+
+  return function () {
+    counter += 1;
+    return counter;
+  };
+}
+
+const add = temporary(); // add is a function at the end
+
+add();
+console.log(add()); // 2
+add();
+console.log(add()); // 4
+
+//  a function once(fn) that: runs the given function only once returns the result every next call returns the first result
+function once(fn) {
+  let called = false;
+  let result;
+
+  return function (...args) {
+    if (!called) {
+      result = fn(...args);
+      called = true;
+    }
+    return result;
+  };
+}
+
+// Use case Example
+function primary() {
+  let counter = 0;
+  counter += 1;
+  return counter;
+}
+
+const firstFunc = once(primary);
+
+console.log(firstFunc());
+console.log(firstFunc());
