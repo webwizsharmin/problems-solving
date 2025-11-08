@@ -55,3 +55,77 @@ const myStr = "world championship";
 const results = countcharacters(myStr);
 
 console.log(results);
+
+/* LEVEL-3: FUNCTION MASTERY */
+
+// makemulitiplier(n) that returns a new function which multiplies anything by n.
+function makemulitiplier(n) {
+  return function (x) {
+    return n * x;
+  };
+}
+
+const multiplyBy6 = makemulitiplier(6);
+
+console.log(multiplyBy6(7));
+
+/**
+ * Calculates the total price of an item, optionally applying a tax rate.
+ *
+ * @param {number} price The base price of the item.
+ * @param {number} [taxRate=0.05] The tax rate to apply (e.g., 0.05 for 5%)
+ * @returns {number} The total price including tax
+ */
+function calculateTotalPrice(price, taxRate = 0.05) {
+  // Ensure price is a number
+  if (typeof price !== "number") {
+    throw new Error("Price must be a number.");
+  }
+
+  // Calculate tax amount
+  const taxAmount = price * taxRate;
+
+  // Calculate total price
+  const totalPrice = price + taxAmount;
+
+  return totalPrice;
+}
+
+// Total with default tax
+const itemPrice1 = 300;
+const totalWithDefaultTax = calculateTotalPrice(itemPrice1);
+console.log(`Total price with default tax: $${totalWithDefaultTax.toFixed(2)}`);
+
+// Total with custom tax
+const itemPrice2 = 500;
+const totalWithCustomTax = calculateTotalPrice(itemPrice2, (taxRate = 0.09));
+console.log(`Total price with custom tax: $${totalWithCustomTax.toFixed(2)}`);
+
+// Function as a parameter and runs it 5 times
+function runFunctionFiveTimes(funcToRun) {
+  for (let i = 0; i < 5; i++) {
+    funcToRun(); // Execute the passed function
+  }
+}
+
+// Example usage:
+function sayLoveYou() {
+  console.log("I Love You!");
+}
+
+function countUp() {
+  let count = 0;
+  return function () {
+    count++;
+    console.log("count: " + count);
+  };
+}
+
+// Running sayLoveYou five times
+console.log("--- Running sayLoveYou five times ---");
+runFunctionFiveTimes(sayLoveYou);
+
+// Running a function that maintains its own state five times
+console.log("\n--- Running countUp five times ---");
+const counter = countUp(); // Get the inner function
+runFunctionFiveTimes(counter);
