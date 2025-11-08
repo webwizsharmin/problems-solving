@@ -99,7 +99,7 @@ console.log(`Total price with default tax: $${totalWithDefaultTax.toFixed(2)}`);
 
 // Total with custom tax
 const itemPrice2 = 500;
-const totalWithCustomTax = calculateTotalPrice(itemPrice2, (taxRate = 0.09));
+const totalWithCustomTax = calculateTotalPrice(itemPrice2, 0.09);
 console.log(`Total price with custom tax: $${totalWithCustomTax.toFixed(2)}`);
 
 // Function as a parameter and runs it 5 times
