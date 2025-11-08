@@ -37,6 +37,6 @@ This project is problem solving challenge for Function basic to advance problem.
 
 2. Write your own version of Array.prototype.map() as a function
 
-### How to see the result
+## How to see the result
 
 please check the browser console to see the result.
